@@ -2,6 +2,13 @@
 name = "rongcloud"
 version = "0.1.0"
 edition = "2024"
+description = "RongCloud IM Server SDK for Rust"
+license = "MIT"
+repository = "https://github.com/your-username/rongcloud"
+keywords = ["rongcloud", "im", "chat", "sdk"]
+categories = ["api-bindings", "network-programming"]
+exclude = ["server-sdk-java/**", ".cargo/**"]
+
 
 [dependencies]
 reqwest = { version = "0.12", features = ["json", "multipart"] }
