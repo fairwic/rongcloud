@@ -245,7 +245,7 @@ cargo fmt
 
 ## 🔗 相关链接
 
-- [融云官方文档](https://doc.rongcloud.cn/imserver/server/v1/overview)
+- [融云官方文档](https://docs.rongcloud.cn/platform-chat-api)
 - [融云开发者平台](https://developer.rongcloud.cn/)
 
 ## 📊 API 覆盖率
