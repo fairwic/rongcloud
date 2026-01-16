@@ -3,9 +3,14 @@
 use super::{Message, UserInfo, message_type};
 use serde::{Deserialize, Serialize};
 
-/// 图片消息
+/// 图片消息 (RC:ImgMsg)
 ///
 /// 发送图片内容，包含缩略图和原图 URL
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ImgMessage {
     /// 图片的 Base64 缩略图数据
@@ -61,9 +66,14 @@ impl Message for ImgMessage {
     }
 }
 
-/// 图文消息
+/// 图文消息 (RC:ImgTextMsg)
 ///
 /// 包含标题、描述、图片和链接的富文本消息
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ImgTextMessage {
     /// 消息标题
@@ -123,7 +133,14 @@ impl Message for ImgTextMessage {
     }
 }
 
-/// GIF 消息
+/// GIF 消息 (RC:GIFMsg)
+///
+/// GIF 动图消息
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GifMessage {
     /// GIF 远程地址

@@ -3,7 +3,14 @@
 use super::{Message, UserInfo, message_type};
 use serde::{Deserialize, Serialize};
 
-/// 文件消息
+/// 文件消息 (RC:FileMsg)
+///
+/// 发送文件内容
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct FileMessage {
     /// 文件名
@@ -53,7 +60,14 @@ impl Message for FileMessage {
     }
 }
 
-/// 位置消息
+/// 位置消息 (RC:LBSMsg)
+///
+/// 发送地理位置信息
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LBSMessage {
     /// 纬度
@@ -103,7 +117,14 @@ impl Message for LBSMessage {
     }
 }
 
-/// 小视频消息
+/// 小视频消息 (RC:SightMsg)
+///
+/// 发送短视频内容
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SightMessage {
     /// 视频远程地址

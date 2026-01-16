@@ -75,7 +75,7 @@ impl RongCloud {
         };
 
         self.post(
-            "/user/getToken.json",
+            super::endpoints::USER_GET_TOKEN,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -98,7 +98,7 @@ impl RongCloud {
         };
 
         self.post(
-            "/user/refresh.json",
+            super::endpoints::USER_REFRESH,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -117,7 +117,7 @@ impl RongCloud {
         let params = InfoParams { user_id };
 
         self.post(
-            "/user/info.json",
+            super::endpoints::USER_INFO,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -139,7 +139,7 @@ impl RongCloud {
         let params = CheckOnlineParams { user_id };
 
         self.post(
-            "/user/checkOnline.json",
+            super::endpoints::USER_CHECK_ONLINE,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -163,7 +163,7 @@ impl RongCloud {
         let params = BlockParams { user_id, minute };
 
         self.post(
-            "/user/block.json",
+            super::endpoints::USER_BLOCK,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -182,7 +182,7 @@ impl RongCloud {
         let params = UnblockParams { user_id };
 
         self.post(
-            "/user/unblock.json",
+            super::endpoints::USER_UNBLOCK,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -197,7 +197,7 @@ impl RongCloud {
         struct BlockQueryParams {}
         let params = BlockQueryParams {};
         self.post(
-            "/user/block/query.json",
+            super::endpoints::USER_BLOCK_QUERY,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -225,7 +225,7 @@ impl RongCloud {
         };
 
         self.post(
-            "/user/blacklist/add.json",
+            super::endpoints::USER_BLACKLIST_ADD,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -253,7 +253,7 @@ impl RongCloud {
         };
 
         self.post(
-            "/user/blacklist/remove.json",
+            super::endpoints::USER_BLACKLIST_REMOVE,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -279,7 +279,7 @@ impl RongCloud {
         let params = BlacklistQueryParams { user_id };
 
         self.post(
-            "/user/blacklist/query.json",
+            super::endpoints::USER_BLACKLIST_QUERY,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -303,7 +303,7 @@ impl RongCloud {
         let params = TagSetParams { user_id, tags };
 
         // API says "application/json" in Java SDK
-        self.post("/user/tag/set.json", &params, "application/json")
+        self.post(super::endpoints::USER_TAG_SET, &params, "application/json")
             .await
     }
 
@@ -325,7 +325,7 @@ impl RongCloud {
 
         // reqwest form supports array of tuples for multiple values
         self.post(
-            "/user/tags/get.json",
+            super::endpoints::USER_TAGS_GET,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -350,7 +350,7 @@ impl RongCloud {
         params.push(("type", typ.to_string()));
 
         self.post(
-            "/user/chat/fb/set.json",
+            super::endpoints::USER_CHAT_FB_SET,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -378,7 +378,7 @@ impl RongCloud {
         let params = BanQueryParams { typ, num, offset };
 
         self.post(
-            "/user/chat/fb/querylist.json",
+            super::endpoints::USER_CHAT_FB_QUERY,
             &params,
             "application/x-www-form-urlencoded",
         )

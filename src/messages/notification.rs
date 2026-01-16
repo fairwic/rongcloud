@@ -3,9 +3,14 @@
 use super::{Message, UserInfo, message_type};
 use serde::{Deserialize, Serialize};
 
-/// 命令消息
+/// 命令消息 (RC:CmdMsg)
 ///
 /// 用于发送不需要在会话界面展示的指令
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: NONE - 在客户端不存储，不计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认未支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CmdMessage {
     /// 命令名称
@@ -39,7 +44,14 @@ impl Message for CmdMessage {
     }
 }
 
-/// 命令通知消息
+/// 命令通知消息 (RC:CmdNtf)
+///
+/// 命令提醒消息
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISPERSISTED - 在客户端存储，不计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认未支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CmdNtfMessage {
     /// 通知名称
@@ -73,7 +85,14 @@ impl Message for CmdNtfMessage {
     }
 }
 
-/// 联系人通知消息
+/// 联系人通知消息 (RC:ContactNtf)
+///
+/// 好友相关通知
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISPERSISTED - 在客户端存储，不计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认未支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ContactNtfMessage {
     /// 操作类型
@@ -123,7 +142,14 @@ impl Message for ContactNtfMessage {
     }
 }
 
-/// 资料通知消息
+/// 资料通知消息 (RC:ProfileNtf)
+///
+/// 用户资料变更通知
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISPERSISTED - 在客户端存储，不计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认未支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ProfileNtfMessage {
     /// 操作类型
@@ -161,7 +187,14 @@ impl Message for ProfileNtfMessage {
     }
 }
 
-/// 信息通知消息
+/// 信息通知消息 (RC:InfoNtf)
+///
+/// 提示条通知消息
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISPERSISTED - 在客户端存储，不计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认未支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct InfoNtfMessage {
     /// 通知内容
@@ -190,7 +223,14 @@ impl Message for InfoNtfMessage {
     }
 }
 
-/// 群组通知消息
+/// 群组通知消息 (RC:GrpNtf)
+///
+/// 群组操作通知
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISPERSISTED - 在客户端存储，不计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认未支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GroupNtfMessage {
     /// 操作名称
@@ -241,7 +281,14 @@ impl Message for GroupNtfMessage {
     }
 }
 
-/// 已读回执消息
+/// 已读回执消息 (RC:ReadNtf)
+///
+/// 单聊已读回执
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: NONE - 在客户端不存储，不计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认未支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ReadReceiptMessage {
     /// 最后一条已读消息的发送时间
@@ -271,7 +318,14 @@ impl Message for ReadReceiptMessage {
     }
 }
 
-/// 正在输入状态消息
+/// 正在输入状态消息 (RC:TypSts)
+///
+/// 表示用户正在输入的状态消息
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: STATUS - 在客户端不存储，不计入未读数  
+/// - **离线消息缓存**: 不支持  
+/// - **远程推送通知**: 不支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TypingStatusMessage {
     /// 正在输入的消息类型
@@ -303,7 +357,14 @@ impl Message for TypingStatusMessage {
     }
 }
 
-/// 撤回命令消息
+/// 撤回命令消息 (RC:RcCmd)
+///
+/// 消息撤回命令
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: NONE - 在客户端不存储，不计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RecallCmdMessage {
     /// 被撤回的消息 UID

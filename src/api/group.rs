@@ -26,7 +26,7 @@ impl RongCloud {
         }
 
         self.post(
-            "/group/create.json",
+            super::endpoints::GROUP_CREATE,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -45,7 +45,7 @@ impl RongCloud {
         }
 
         self.post(
-            "/group/sync.json",
+            super::endpoints::GROUP_SYNC,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -60,7 +60,7 @@ impl RongCloud {
     ) -> Result<RcResponse<()>, RongCloudError> {
         let params = vec![("groupId", group_id), ("groupName", group_name)];
         self.post(
-            "/group/refresh.json",
+            super::endpoints::GROUP_REFRESH,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -82,7 +82,7 @@ impl RongCloud {
             params.push(("userId", id.to_string()));
         }
         self.post(
-            "/group/join.json",
+            super::endpoints::GROUP_JOIN,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -100,7 +100,7 @@ impl RongCloud {
             params.push(("userId", id.to_string()));
         }
         self.post(
-            "/group/quit.json",
+            super::endpoints::GROUP_QUIT,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -115,7 +115,7 @@ impl RongCloud {
     ) -> Result<RcResponse<()>, RongCloudError> {
         let params = vec![("userId", user_id), ("groupId", group_id)];
         self.post(
-            "/group/dismiss.json",
+            super::endpoints::GROUP_DISMISS,
             &params,
             "application/x-www-form-urlencoded",
         )

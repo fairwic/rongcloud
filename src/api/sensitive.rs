@@ -43,7 +43,7 @@ impl RongCloud {
         }
 
         self.post(
-            "/sensitiveword/add.json",
+            super::endpoints::SENSITIVEWORD_ADD,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -58,8 +58,12 @@ impl RongCloud {
         words: Vec<SensitiveWordModel>,
     ) -> Result<RcResponse<()>, RongCloudError> {
         let params = AddSensitiveWordsModel { words };
-        self.post("/sensitiveword/batch/add.json", &params, "application/json")
-            .await
+        self.post(
+            super::endpoints::SENSITIVEWORD_BATCH_ADD,
+            &params,
+            "application/json",
+        )
+        .await
     }
 
     /// List sensitive words.
@@ -75,7 +79,7 @@ impl RongCloud {
             params.push(("type".to_string(), val.to_string()));
         }
         self.post(
-            "/sensitiveword/list.json",
+            super::endpoints::SENSITIVEWORD_LIST,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -91,7 +95,7 @@ impl RongCloud {
     ) -> Result<RcResponse<()>, RongCloudError> {
         let params = vec![("word".to_string(), word.to_string())];
         self.post(
-            "/sensitiveword/delete.json",
+            super::endpoints::SENSITIVEWORD_DELETE,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -110,7 +114,7 @@ impl RongCloud {
             params.push(("words".to_string(), word.to_string()));
         }
         self.post(
-            "/sensitiveword/batch/delete.json",
+            super::endpoints::SENSITIVEWORD_BATCH_DELETE,
             &params,
             "application/x-www-form-urlencoded",
         )

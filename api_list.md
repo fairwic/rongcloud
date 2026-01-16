@@ -254,7 +254,7 @@
 设置群成员推送备注名 /group/remarks/set.json 100 次/每秒，可调频 暂不支持 API 调试
 删除群成员推送备注名 /group/remarks/del.json 100 次/每秒，可调频 暂不支持 API 调试
 查询群成员推送备注名 /group/remarks/get.json 100 次/每秒，可调频 暂不支持 API 调试
-最后于 2026 年 1 月 9 日 更新 -->
+
 
 推送与通知管理
 功能/文档页面 API URL 频率限制 北极星 API 调试地址 Apifox 调试地址
@@ -266,3 +266,5 @@
 删除用户免打扰时段 /user/blockPushPeriod/delete.json 100 次/每秒，可调频 暂不支持 API 调试
 查询用户免打扰时段 /user/blockPushPeriod/get.json 100 次/每秒，可调频 暂不支持 API 调试
 推送 Plus /push/custom.json 20 次/每小时，100 次/每自然日 API 调试 API 调试
+
+最后于 2026 年 1 月 9 日 更新 -->

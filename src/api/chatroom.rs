@@ -25,7 +25,7 @@ impl RongCloud {
             ));
         }
         self.post(
-            "/chatroom/create.json",
+            super::endpoints::CHATROOM_CREATE,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -41,7 +41,7 @@ impl RongCloud {
     ) -> Result<RcResponse<()>, RongCloudError> {
         let params = vec![("chatroomId", chatroom_id)];
         self.post(
-            "/chatroom/destroy.json",
+            super::endpoints::CHATROOM_DESTROY,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -57,7 +57,7 @@ impl RongCloud {
     ) -> Result<RcResponse<()>, RongCloudError> {
         let params = vec![("chatroomId", chatroom_id)];
         self.post(
-            "/chatroom/query.json",
+            super::endpoints::CHATROOM_QUERY,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -79,7 +79,7 @@ impl RongCloud {
             ("order", order.to_string()),
         ];
         self.post(
-            "/chatroom/user/query.json",
+            super::endpoints::CHATROOM_USER_QUERY,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -96,7 +96,7 @@ impl RongCloud {
     ) -> Result<RcResponse<()>, RongCloudError> {
         let params = vec![("chatroomId", chatroom_id), ("userId", user_id)];
         self.post(
-            "/chatroom/user/exist.json",
+            super::endpoints::CHATROOM_USER_EXIST,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -118,7 +118,7 @@ mod tests {
         let client = RongCloud::new(config);
 
         let mock_create = server
-            .mock("POST", "/chatroom/create.json")
+            .mock("POST", "/chatroom/create_new.json")
             .with_status(200)
             .with_body(r#"{"code": 200}"#)
             .create_async()

@@ -3,7 +3,14 @@
 use super::{Message, UserInfo, message_type};
 use serde::{Deserialize, Serialize};
 
-/// 语音消息（AMR 格式）
+/// 语音消息 (RC:VcMsg)
+///
+/// AMR 格式语音消息
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VoiceMessage {
     /// 语音内容的 Base64 编码
@@ -50,7 +57,14 @@ impl Message for VoiceMessage {
     }
 }
 
-/// 高清语音消息（AAC 格式）
+/// 高清语音消息 (RC:HQVCMsg)
+///
+/// AAC 格式高清语音消息
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HQVoiceMessage {
     /// 远程音频地址

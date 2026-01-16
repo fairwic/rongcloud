@@ -66,7 +66,7 @@ impl RongCloud {
     ) -> Result<RcResponse<()>, RongCloudError> {
         let params = FriendAddParams { user_id, target_id };
         self.post(
-            "/friend/add.json",
+            super::endpoints::FRIEND_ADD,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -85,7 +85,7 @@ impl RongCloud {
             target_ids: target_ids_str,
         };
         self.post(
-            "/friend/delete.json",
+            super::endpoints::FRIEND_DELETE,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -96,7 +96,7 @@ impl RongCloud {
     pub async fn friend_clean(&self, user_id: &str) -> Result<RcResponse<()>, RongCloudError> {
         let params = FriendCleanParams { user_id };
         self.post(
-            "/friend/clean.json",
+            super::endpoints::FRIEND_CLEAN,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -118,7 +118,7 @@ impl RongCloud {
             ext_profile,
         };
         self.post(
-            "/friend/profile/set.json",
+            super::endpoints::FRIEND_PROFILE_SET,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -140,7 +140,7 @@ impl RongCloud {
             order,
         };
         self.post(
-            "/friend/get.json",
+            super::endpoints::FRIEND_GET,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -159,7 +159,7 @@ impl RongCloud {
             target_ids: target_ids_str,
         };
         self.post(
-            "/friend/check.json",
+            super::endpoints::FRIEND_CHECK,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -184,7 +184,7 @@ impl RongCloud {
             permission_type,
         };
         self.post(
-            "/friend/permission/set.json",
+            super::endpoints::FRIEND_PERMISSION_SET,
             &params,
             "application/x-www-form-urlencoded",
         )
@@ -205,7 +205,7 @@ impl RongCloud {
             user_ids: user_ids.join(","),
         };
         self.post(
-            "/friend/permission/get.json",
+            super::endpoints::FRIEND_PERMISSION_GET,
             &params,
             "application/x-www-form-urlencoded",
         )

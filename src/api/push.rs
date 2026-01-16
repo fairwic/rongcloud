@@ -32,7 +32,8 @@ impl RongCloud {
     ///
     /// See: https://doc.rongcloud.cn/imserver/server/v1/push/send
     pub async fn push(&self, payload: &PushModel) -> Result<RcResponse<()>, RongCloudError> {
-        self.post("/push.json", payload, "application/json").await
+        self.post(super::endpoints::PUSH, payload, "application/json")
+            .await
     }
 
     /// Send broadcast.
@@ -44,7 +45,8 @@ impl RongCloud {
         &self,
         payload: &PushModel,
     ) -> Result<RcResponse<()>, RongCloudError> {
-        self.post("/push.json", payload, "application/json").await
+        self.post(super::endpoints::PUSH, payload, "application/json")
+            .await
     }
 }
 

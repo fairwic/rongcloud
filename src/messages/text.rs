@@ -3,9 +3,14 @@
 use super::{MentionedInfo, Message, UserInfo, message_type};
 use serde::{Deserialize, Serialize};
 
-/// 文本消息
+/// 文本消息 (RC:TxtMsg)
 ///
 /// 最基本的消息类型，包含文本内容
+///
+/// # 消息属性
+/// - **客户端计数与存储策略**: ISCOUNTED - 在客户端存储，且计入未读数  
+/// - **离线消息缓存**: 支持  
+/// - **远程推送通知**: 默认已支持推送  
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TxtMessage {
     /// 消息内容
